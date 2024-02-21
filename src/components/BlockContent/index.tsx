@@ -29,7 +29,7 @@ const Quote = ({ quote, caption }: any) => {
 const List = ({ style, items }: any) => {
   return (
     <ol>
-      {items.map((item: any, index:any) => (
+      {items.map((item: any, index: any) => (
         <li
           key={index}
           className={`pl-5 ${style === "ordered" ? "list-decimal" : "list-disc"}`}

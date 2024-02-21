@@ -6,7 +6,7 @@ import Link from "next/link";
 const BlogMiniCard = ({ post, index }: any) => {
   const { title, publishedAt, _id } = post;
 
-  console.log(post)
+  console.log(post);
   const { fullname, profile_img } = post?.author?.personal_info;
   return (
     <Link href={`/blog/single?id=${_id}`} className="flex gap-5 mb-4">

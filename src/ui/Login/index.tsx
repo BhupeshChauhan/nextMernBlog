@@ -15,7 +15,7 @@ import * as Yup from "yup";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useGlobalContext } from "@/context/GlobalContext";
-import CustomTextField from "@/formComponent/FormFeilds/CustomTextField";
+import CustomTextField from "@/common/CustomTextField";
 
 interface loginType {
   title?: string;
