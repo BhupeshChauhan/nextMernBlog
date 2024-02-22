@@ -36,22 +36,22 @@ export const StickyScroll = ({
   ];
   return (
     <motion.div
-      className="h-[50rem] overflow-y-auto no-scrollbar flex justify-center relative space-x-10 p-10"
+      className="h-[100vh] overflow-y-auto no-scrollbar flex justify-center relative space-x-10"
       ref={ref}
     >
       <div className="div relative flex items-start px-4">
         <div className="max-w-2xl">
-        <motion.div
-                animate={{
-                  background: `url(${content[activeCard].featuredImage})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                className="md:hidden z-20 h-[50vw] w-full rounded-md bg-white sticky top-10 overflow-hidden"
-              ></motion.div>
+          <motion.div
+            animate={{
+              background: `url(${content[activeCard].featuredImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="md:hidden z-20 h-[50vw] w-full rounded-md bg-white sticky top-10 overflow-hidden"
+          ></motion.div>
           {content.map((item, index) => (
-            <div key={item.name + index} className="my-20 h-[50rem]">
+            <div key={item.name + index} className="p-20 h-full md:h-[50rem] shadow-sm">
               <motion.h2
                 initial={{
                   opacity: 0,
