@@ -67,7 +67,7 @@ export default async function Home({ searchParams }: any) {
 
   return (
     <AnimationWapper>
-      <section className="snap-mandatory snap-y scroll-pt-2 scroll-smooth touch-auto h-[100vh] overflow-scroll">
+      <section className="snap-proximity snap-y scroll-pt-3 scroll-smooth touch-auto h-[100vh] overflow-scroll">
         <div className="w-full h-[100vh] relative snap-start snap-always">
           <Featured posts={featuredPost} />
         </div>
