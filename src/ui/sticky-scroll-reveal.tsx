@@ -46,7 +46,7 @@ export const StickyScroll = ({
             className="md:hidden z-20 h-[50vw] w-full rounded-md bg-white sticky top-10 overflow-hidden"
           ></motion.div>
           {content.map((item, index) => (
-            <div key={item.name + index} className="p-20 h-full md:h-[50rem] shadow-sm">
+            <div key={item.name + index} className="p-10 h-full md:h-[50rem] shadow-sm">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -65,7 +65,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0,
                 }}
-                className="text-kg text-darkGrey max-w-sm mt-10"
+                className="text-kg text-darkGrey mt-10"
               >
                 {item.description}
               </motion.p>

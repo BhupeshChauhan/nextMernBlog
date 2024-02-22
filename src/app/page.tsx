@@ -160,6 +160,8 @@ export default async function Home({ searchParams }: any) {
         </div>
         <div className="snap-start snap-always">
           <BackBeanBanner />
+        </div>
+        <div className="snap-start snap-always">
         <Footer />
         </div>
       </section>
