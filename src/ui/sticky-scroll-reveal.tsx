@@ -29,11 +29,6 @@ export const StickyScroll = ({
     });
   });
 
-  const backgroundColors = [
-    "var(--slate-900)",
-    "var(--black)",
-    "var(--neutral-900)",
-  ];
   return (
     <motion.div
       className="h-[100vh] overflow-y-auto no-scrollbar flex justify-center relative space-x-10"
@@ -57,7 +52,7 @@ export const StickyScroll = ({
                   opacity: 0,
                 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
+                  opacity: activeCard === index ? 1 : 0,
                 }}
                 className="text-2xl font-bold"
               >
@@ -68,7 +63,7 @@ export const StickyScroll = ({
                   opacity: 0,
                 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
+                  opacity: activeCard === index ? 1 : 0,
                 }}
                 className="text-kg text-darkGrey max-w-sm mt-10"
               >
