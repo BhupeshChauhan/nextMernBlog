@@ -67,7 +67,7 @@ export default async function Home({ searchParams }: any) {
 
   return (
     <AnimationWapper>
-      <section className="snap-mandatory snap-y scroll-pt-6 scroll-smooth touch-auto h-[100vh] overflow-scroll">
+      <section className="snap-mandatory snap-y scroll-pt-2 scroll-smooth touch-auto h-[100vh] overflow-scroll">
         <div className="w-full h-[100vh] relative snap-start snap-always">
           <Featured posts={featuredPost} />
         </div>
@@ -155,7 +155,7 @@ export default async function Home({ searchParams }: any) {
             </div>
           </div>
         </div>
-        <div className="snap-start h-[100vh] snap-always">
+        <div className="snap-start h-[90vh] snap-always">
           <StickyScrollReveal content={resources} />
         </div>
         <div className="snap-start h-[100vh] snap-always">
