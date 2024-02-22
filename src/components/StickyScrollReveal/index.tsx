@@ -4,7 +4,7 @@ import React from "react";
 
 export function StickyScrollReveal({content}: any) {
   return (
-    <div className="p-10">
+    <div>
       <StickyScroll content={content} />
     </div>
   );

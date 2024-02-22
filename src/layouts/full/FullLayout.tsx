@@ -10,10 +10,9 @@ const FullLayout = ({ children }: any) => {
       <Navbar />
       <main className="flex min-h-screen">
         <div className="w-full">
-          <div className="p-5">{children}</div>
+          <>{children}</>
         </div>
       </main>
-      <Footer />
     </>
   );
 };

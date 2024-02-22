@@ -12,6 +12,7 @@ import Featured from "@/ui/FeaturedPosts";
 import { CustomBentoGrid } from "@/components/CustomBentoGrid";
 import { StickyScrollReveal } from "@/components/StickyScrollReveal";
 import { BackBeanBanner } from "@/components/BackBeanBanner";
+import Footer from "@/layouts/full/Footer";
 
 export default async function Home({ searchParams }: any) {
   let trandingPosts: any = [];
@@ -39,21 +40,25 @@ export default async function Home({ searchParams }: any) {
     categories = categoriesData;
   });
 
-  await CategoriesApi.getAllByType({type: "series", page}).then((seriesData) => {
-    // response handling  
-    series = seriesData.categories;
-    seriesTotal = seriesData.total_length
-  });
+  await CategoriesApi.getAllByType({ type: "series", page }).then(
+    (seriesData) => {
+      // response handling
+      series = seriesData.categories;
+      seriesTotal = seriesData.total_length;
+    }
+  );
 
-  await CategoriesApi.getAllByType({type: "resources", page}).then((seriesData) => {
-    // response handling  
-    resources = seriesData.categories;
-    resourcesTotal = seriesData.total_length
-  });
+  await CategoriesApi.getAllByType({ type: "resorces", page }).then(
+    (seriesData) => {
+      // response handling
+      resources = seriesData.categories;
+      console.log(seriesData);
+      resourcesTotal = seriesData.total_length;
+    }
+  );
 
   await PostAPI.getAllFeatured()
     .then((blogs) => {
-      console.log(blogs)
       featuredPost = blogs;
     })
     .catch((err) => {
@@ -61,24 +66,21 @@ export default async function Home({ searchParams }: any) {
     });
 
   return (
-    <div style={{ width: "100%" }}>
-      <AnimationWapper>
-        <div className="w-full relative">
-            <Featured posts={featuredPost} />
-          </div>
-          <div className="p-10">
-            <BackBeanBanner />
-          </div>
-        <section className="h-cover flex justify-center gap-10">
+    <AnimationWapper>
+      <section className="snap-mandatory snap-y scroll-pt-6 scroll-smooth touch-auto h-[100vh] overflow-scroll">
+        <div className="w-full h-[100vh] relative snap-start snap-always">
+          <Featured posts={featuredPost} />
+        </div>
+        <div className="container h-[100vh] h-cover flex snap-always justify-center gap-10 snap-start">
           {/* latest blogs */}
-          
-          <div className="w-full">
+
+          <div className="w-full overflow-y-auto no-scrollbar">
             <InpageNavigation
               tabs={["Blog series collection", "Trending Blogs"]}
               defaultHidden={["Trending Blogs"]}
             >
               <>
-              <CustomBentoGrid items={series} />
+                <CustomBentoGrid items={series} />
                 {seriesTotal > 4 ? (
                   <CustomPagination
                     linkprefix={
@@ -118,9 +120,7 @@ export default async function Home({ searchParams }: any) {
                         transition={{ duration: 1, delay: i * 0.1 }}
                         key={i}
                       >
-                        <Link
-                          href={`/blog?category=${data.name}`}
-                        >
+                        <Link href={`/blog?category=${data.name}`}>
                           <button
                             className={
                               "tag " +
@@ -154,11 +154,15 @@ export default async function Home({ searchParams }: any) {
               </div>
             </div>
           </div>
-        </section>
-          <div>
-            <StickyScrollReveal  content={resources} />
-          </div>
-      </AnimationWapper>
-    </div>
+        </div>
+        <div className="snap-start h-[100vh] snap-always">
+          <StickyScrollReveal content={resources} />
+        </div>
+        <div className="snap-start h-[100vh] snap-always">
+          <BackBeanBanner />
+        <Footer />
+        </div>
+      </section>
+    </AnimationWapper>
   );
 }
