@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../shared/logo/Logo";
 
 const Footer = () => {
   return (
@@ -84,11 +85,7 @@ const Footer = () => {
 
         <div className="flex items-center justify-between">
           <a href="#">
-            <img
-              className="w-auto h-7"
-              src="https://merakiui.com/images/full-logo.svg"
-              alt=""
-            />
+          <Logo />
           </a>
 
           <div className="flex -mx-2">
