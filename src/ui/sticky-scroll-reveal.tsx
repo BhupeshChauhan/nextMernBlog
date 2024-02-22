@@ -46,7 +46,7 @@ export const StickyScroll = ({
             className="md:hidden z-20 h-[50vw] w-full rounded-md bg-white sticky top-10 overflow-hidden"
           ></motion.div>
           {content.map((item, index) => (
-            <div key={item.name + index} className="p-10 h-full md:h-[50rem] shadow-sm">
+            <div key={item.name + index} className="p-10 h-full flex flex-col items-center justify-center md:h-[50rem] shadow-sm">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -81,7 +81,7 @@ export const StickyScroll = ({
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="hidden lg:block h-[30vw] w-[45vw] rounded-md bg-white sticky top-10 overflow-hidden"
+        className="hidden lg:block h-[30vw] w-[45vw] rounded-md bg-white sticky top-auto overflow-hidden"
       ></motion.div>
     </motion.div>
   );

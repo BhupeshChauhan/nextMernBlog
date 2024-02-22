@@ -155,7 +155,7 @@ export default async function Home({ searchParams }: any) {
             </div>
           </div>
         </div>
-        <div className="snap-start snap-always h-[90vh]">
+        <div className="w-[90%] m-auto">
           <StickyScrollReveal content={resources} />
         </div>
         <div className="snap-start snap-always">
