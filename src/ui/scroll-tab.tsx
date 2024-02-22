@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
 
 type Tab = {
   name: string;
@@ -110,20 +111,21 @@ export const FadeInDiv = ({
   return (
     <div className="relative w-full h-full">
       {tabs.map((tab, idx) => (
+        <Link href={`blog?category=${tab.name}&type=resorces`}>
         <motion.div
           key={tab.value}
           layoutId={tab.value}
           style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -50 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: isActive(tab) ? [0, 40, 0] : 0,
-          }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
-        >
+              scale: 1 - idx * 0.1,
+              top: hovering ? idx * -50 : 0,
+              zIndex: -idx,
+              opacity: idx < 3 ? 1 - idx * 0.1 : 0,
+            }}
+            animate={{
+                y: isActive(tab) ? [0, 40, 0] : 0,
+            }}
+            className={cn("w-full h-full absolute top-0 left-0", className)}
+            >
           <div className="w-full overflow-hidden relative h-[40vh] md:h-[60vh] rounded-2xl p-10 text-xl md:text-4xl text-white bg-black">
             <h4 className="text-xl">{tab.name}</h4>
             <p className="text-sm mt-2 hidden md:block">{tab.description}</p>
@@ -133,9 +135,10 @@ export const FadeInDiv = ({
               width="1000"
               height="1000"
               className="object-cover object-left-top h-[60%]  md:h-[90%] absolute bottom-10 md:-bottom-32 inset-x-0 w-[90%] rounded-xl mx-auto"
-            />
+              />
           </div>
         </motion.div>
+              </Link>
       ))}
     </div>
   );

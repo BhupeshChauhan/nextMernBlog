@@ -1,7 +1,6 @@
 import React from "react";
 import AnimationWapper from "@/common/PageAnimation";
 import InpageNavigation from "@/components/InpageNavigation";
-import BlogCard from "@/components/BlogCard";
 import BlogMiniCard from "@/components/BlogMiniCard";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { PostAPI } from "@/apis/PostApi";
@@ -39,6 +38,14 @@ export default async function Home({ searchParams }: any) {
     // response handling
     categories = categoriesData;
   });
+
+  await CategoriesApi.getAllByType({ type: 'blog', page }).then(
+    (seriesData) => {
+      // response handling
+      categories = seriesData.categories;
+      console.log(seriesData);
+    }
+  );
 
   await CategoriesApi.getAllByType({ type: "series", page }).then(
     (seriesData) => {
@@ -123,7 +130,7 @@ export default async function Home({ searchParams }: any) {
                         transition={{ duration: 1, delay: i * 0.1 }}
                         key={i}
                       >
-                        <Link href={`/blog?category=${data.name}`}>
+                        <Link href={`/blog?category=${data.name}&type=blog`}>
                           <button
                             className={
                               "tag " +

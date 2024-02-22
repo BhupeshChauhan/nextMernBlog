@@ -1,6 +1,6 @@
 import { PostAPI } from "@/apis/PostApi";
 import BlockContent from "@/components/BlockContent";
-import { Typography } from "@mui/material";
+import Footer from "@/layouts/full/Footer";
 import { format, parseISO } from "date-fns";
 import React from "react";
 
@@ -17,14 +17,15 @@ const SingleBLogPage = async ({ searchParams }: any) => {
     });
 
   return (
-    <div className="max-w-[900px] center max-lg:px-[5vw]">
-      <div className="w-full aspect-video rounded-lg overflow-hidden bg-grey">
-        <img src={postData.banner} className="z-20" />
+    <>
+    <div className="max-w-[900px] center container max-lg:px-[5vw]">
+      <div className="w-full aspect-video rounded-lg overflow-hidden bg-grey shadow-md my-10">
+        <img src={postData.banner} className="z-20 " />
       </div>
       <h1 className="text-4xl font-medium mt-2 leading-tight line-clamp-2">
         {postData.title}
       </h1>
-      <p className="text-lg mt-2 leading-tight line-clamp-2">{postData.des}</p>
+      <p className="text-lg mt-2 leading-tight">{postData.des}</p>
       <div className="flex gap-2 items-center my-4">
         <img
           className="w-6 h-6 rounded-full"
@@ -49,6 +50,8 @@ const SingleBLogPage = async ({ searchParams }: any) => {
         })}
       </div>
     </div>
+      <Footer />
+    </>
   );
 };
 

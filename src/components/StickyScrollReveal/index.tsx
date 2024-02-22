@@ -1,6 +1,7 @@
 "use client";
 import { Tabs } from "@/ui/scroll-tab";
 import { StickyScroll } from "@/ui/sticky-scroll-reveal";
+import Link from "next/link";
 import React from "react";
 
 export function StickyScrollReveal({content}: any) {

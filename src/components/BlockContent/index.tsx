@@ -3,11 +3,11 @@ import React from "react";
 const Img = ({ url, caption }: any) => {
   return (
     <>
-      <div className="w-full aspect-video rounded-lg overflow-hidden bg-grey mt-4">
-        <img src={url} className="z-20" />
+      <div className="w-full rounded-lg overflow-hidden bg-grey mt-4">
+        <img src={url} className="object-scale-down max-h-[60vh]" />
       </div>
       {caption.length ? (
-        <p className="w-full text-center my-3 md:mb-12 text-base text-darkGrey">
+        <p className="w-full text-center m-auto my-3 md:mb-12 text-base text-darkGrey">
           {caption}
         </p>
       ) : (
@@ -33,7 +33,7 @@ const List = ({ style, items }: any) => {
         <li
           key={index}
           className={`pl-5 ${style === "ordered" ? "list-decimal" : "list-disc"}`}
-          dangerouslySetInnerHTML={{ __html: item.text }}
+          dangerouslySetInnerHTML={{ __html: item }}
         />
       ))}
     </ol>
@@ -43,7 +43,7 @@ const BlockContent = ({ block }: any) => {
   const { type, data } = block;
   if (type === "paragraph") {
     return (
-      <p className="text-sm" dangerouslySetInnerHTML={{ __html: data.text }} />
+      <p className="text-md" dangerouslySetInnerHTML={{ __html: data.text }} />
     );
   }
   if (type === "header") {
@@ -106,6 +106,7 @@ const BlockContent = ({ block }: any) => {
     return <Quote quote={data.text} caption={data.caption} />;
   }
   if (type === "list") {
+    console.log(data.items);
     return <List style={data.style} items={data.items} />;
   }
 };
