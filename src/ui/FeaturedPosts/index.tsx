@@ -28,7 +28,7 @@ const Featured = ({ posts }: any) => {
         <div className={styles.imageBackgroundBlur}></div>
         <div className={styles.FeaturedTextContainermd}>
           <div className={styles.postmd}>
-            <CustomCarousel itemArray={posts} width="65vw" height="auto" />
+            <CustomCarousel itemArray={posts} width="auto" height="auto" />
           </div>
         </div>
       </div>

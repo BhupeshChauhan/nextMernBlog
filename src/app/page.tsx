@@ -68,13 +68,13 @@ export default async function Home({ searchParams }: any) {
   return (
     <AnimationWapper>
       <section className="snap-proximity snap-y scroll-pt-3 scroll-smooth touch-auto h-[100vh] overflow-scroll">
-        <div className="w-full h-[100vh] relative snap-start snap-always">
+        <div className="snap-start snap-always w-full h-[100vh] relative ">
           <Featured posts={featuredPost} />
         </div>
-        <div className="container h-[100vh] h-cover flex snap-always justify-center gap-10 snap-start">
+        <div className="snap-start snap-always container h-cover flex justify-center gap-10 ">
           {/* latest blogs */}
 
-          <div className="w-full overflow-y-auto no-scrollbar">
+          <div className="w-full">
             <InpageNavigation
               tabs={["Blog series collection", "Trending Blogs"]}
               defaultHidden={["Trending Blogs"]}
@@ -155,10 +155,10 @@ export default async function Home({ searchParams }: any) {
             </div>
           </div>
         </div>
-        <div className="snap-start h-[90vh] snap-always">
+        <div className="snap-start snap-always h-[90vh]">
           <StickyScrollReveal content={resources} />
         </div>
-        <div className="snap-start h-[100vh] snap-always">
+        <div className="snap-start snap-always h-[100vh]">
           <BackBeanBanner />
         <Footer />
         </div>
