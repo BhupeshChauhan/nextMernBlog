@@ -8,27 +8,23 @@ import { PostAPI } from "@/apis/PostApi";
 import { CategoriesApi } from "@/apis/CategoriesApi";
 import Link from "next/link";
 import CustomPagination from "@/components/CustomPagination";
+import Featured from "@/ui/FeaturedPosts";
+import { CustomBentoGrid } from "@/components/CustomBentoGrid";
+import { StickyScrollReveal } from "@/components/StickyScrollReveal";
+import { BackBeanBanner } from "@/components/BackBeanBanner";
 
 export default async function Home({ searchParams }: any) {
-  let latestPosts: any = [];
   let trandingPosts: any = [];
   let categories: any = [];
-  let latestPostsTotal: any = [];
+  let series: any = [];
+  let resources: any = [];
+  let seriesTotal: any = [];
+  let resourcesTotal: any = [];
+  let featuredPost: any = [];
   const page =
     typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
   const category =
     typeof searchParams.category === "string" ? searchParams.category : "";
-
-  if (category === "") {
-    await PostAPI.getLatest({ page })
-      .then((response) => {
-        latestPosts = response.blogs;
-        latestPostsTotal = response.total_length;
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
 
   await PostAPI.getTrending()
     .then((posts) => {
@@ -43,45 +39,53 @@ export default async function Home({ searchParams }: any) {
     categories = categoriesData;
   });
 
-  if (category !== "") {
-    await PostAPI.searchByCategory({ category, page })
-      .then((response) => {
-        latestPosts = response.blogs;
-        latestPostsTotal = response.total_length;
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
+  await CategoriesApi.getAllByType({type: "series", page}).then((seriesData) => {
+    // response handling  
+    series = seriesData.categories;
+    seriesTotal = seriesData.total_length
+  });
+
+  await CategoriesApi.getAllByType({type: "resources", page}).then((seriesData) => {
+    // response handling  
+    resources = seriesData.categories;
+    resourcesTotal = seriesData.total_length
+  });
+
+  await PostAPI.getAllFeatured()
+    .then((blogs) => {
+      console.log(blogs)
+      featuredPost = blogs;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 
   return (
     <div style={{ width: "100%" }}>
       <AnimationWapper>
+        <div className="w-full relative">
+            <Featured posts={featuredPost} />
+          </div>
+          <div className="p-10">
+            <BackBeanBanner />
+          </div>
         <section className="h-cover flex justify-center gap-10">
           {/* latest blogs */}
+          
           <div className="w-full">
             <InpageNavigation
-              tabs={[category.length > 0 ? category : "Home", "Trending Blogs"]}
+              tabs={["Blog series collection", "Trending Blogs"]}
               defaultHidden={["Trending Blogs"]}
             >
               <>
-                {latestPosts.map((post: any, i: any) => {
-                  return (
-                    <AnimationWapper
-                      transition={{ duration: 1, delay: i * 0.1 }}
-                      key={i}
-                    >
-                      <BlogCard post={post} />
-                    </AnimationWapper>
-                  );
-                })}
-                {latestPostsTotal > 5 ? (
+              <CustomBentoGrid items={series} />
+                {seriesTotal > 4 ? (
                   <CustomPagination
                     linkprefix={
                       category.length > 0 ? `?category=${category}` : ""
                     }
                     page={page}
-                    total={latestPostsTotal}
+                    total={seriesTotal}
                   />
                 ) : (
                   <></>
@@ -115,11 +119,7 @@ export default async function Home({ searchParams }: any) {
                         key={i}
                       >
                         <Link
-                          href={
-                            category !== data.name
-                              ? `/?category=${data.name}`
-                              : "/"
-                          }
+                          href={`/blog?category=${data.name}`}
                         >
                           <button
                             className={
@@ -155,6 +155,9 @@ export default async function Home({ searchParams }: any) {
             </div>
           </div>
         </section>
+          <div>
+            <StickyScrollReveal  content={resources} />
+          </div>
       </AnimationWapper>
     </div>
   );

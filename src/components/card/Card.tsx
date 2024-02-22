@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import styles from "./card.module.css";
 
 const Card = ({ key, post }: any) => {
-  console.log(post.id);
   if (post.id > 6) {
     return null;
   }

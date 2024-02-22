@@ -26,6 +26,18 @@ export const CategoriesApi = {
 
     return response.data.categories;
   },
+  getAllByType: async function (data: any, cancel = false) {
+    const response = await api.request({
+      url: "/categories/getbytype",
+      method: "POST",
+      data: data,
+      signal: cancel
+        ? cancelApiObject[this.getAll.name].handleRequestCancellation().signal
+        : undefined,
+    });
+
+    return response.data.response;
+  },
   search: async function (name: any, cancel = false) {
     const response = await api.request({
       url: "/categories/search",

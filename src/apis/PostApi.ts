@@ -26,6 +26,18 @@ export const PostAPI = {
 
     return response.data.posts;
   },
+
+  getAllFeatured: async function (cancel = false) {
+    const response = await api.request({
+      url: "/posts/featured",
+      method: "GET",
+      signal: cancel
+        ? cancelApiObject[this.getAll.name].handleRequestCancellation().signal
+        : undefined,
+    });
+    return response.data.blogs;
+  },
+
   search: async function (name: any, cancel = false) {
     const response = await api.request({
       url: "/posts/search",

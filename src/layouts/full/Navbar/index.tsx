@@ -31,7 +31,8 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className="navbar">
+    <nav className="sticky top-3 z-20 bg-white bg-opacity-15">
+      <div className="navbar  w-[90%] rounded-2xl shadow-md m-auto">
       <Logo />
       <div
         className={
@@ -64,6 +65,7 @@ const Navbar = () => {
         <Link href="/signup" className="hidden md:block btn-light py-2">
           Sign Up
         </Link>
+      </div>
       </div>
     </nav>
   );

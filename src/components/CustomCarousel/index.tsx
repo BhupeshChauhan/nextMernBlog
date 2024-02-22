@@ -1,21 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@mui/material";
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./CustomCarousel.module.css";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import "swiper/css";
+import { format, parseISO } from "date-fns";
 
-const CustomCarousel = ({ itemArray }: any) => {
+const CustomCarousel = ({ itemArray, width, height }: any) => {
   return (
-    <>
+    <div className="z-auto">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
         loop={true}
-        style={{ width: "40vw" }}
+        style={{ width: width, height: height }}
         pagination={{
           clickable: true,
         }}
@@ -26,7 +27,7 @@ const CustomCarousel = ({ itemArray }: any) => {
           disableOnInteraction: false,
         }}
       >
-        {itemArray.map((item: any) => {
+        {itemArray?.map((item: any) => {
           return (
             <SwiperSlide key={item.id}>
               <div
@@ -37,47 +38,44 @@ const CustomCarousel = ({ itemArray }: any) => {
                   alignItems: "center",
                 }}
               >
+                 <Link href={`/blog/single?id=${item._id}`}>
                 <h1 className={styles.title}>{item.title}</h1>
+
+                 </Link>
                 <div className={styles.textContainer}>
                   <div>
                     <img
-                      src={item.featuredImage}
+                      src={item.banner}
                       alt=""
                       className={styles.textAreaImage}
                     />
                   </div>
-                  <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                  <div className="flex gap-2 items-center">
                     <img
-                      className="mr-4 w-10 h-10 rounded-full"
-                      src={item?.author?.profilePicture}
-                      alt="Jese Leos"
+                      className="w-6 h-6 aspect-video rounded-full"
+                      src={item?.author?.personal_info.profile_img}
+                      alt={item?.author?.personal_info.fullname}
                     />
-                    <div>
-                      <a
-                        href="#"
-                        rel="author"
-                        className="text-lg font-bold text-gray-900 dark:text-white"
-                      >
-                        {item?.author?.name}
-                      </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {item?.author?.bio}
-                      </p>
-                      {/* <p className="text-sm text-gray-500 dark:text-gray-400"><time>Feb. 8, 2022</time></p> */}
-                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+                      {item?.author?.personal_info.fullname}
+                    </p>
+                    <p className="min-w-fit text-xs text-gray-500 dark:text-gray-400">
+                      {" "}
+                      {format(parseISO(item?.publishedAt), "MMMM dd, yyyy")}
+                    </p>
                   </div>
-                  <h1 className={styles.postTitle}>{item.description}</h1>
-                  <div>
+                  <p className={styles.postTitle}>{item.des}</p>
+                  <div className="flex gap-2 mb-4">
                     <Link href="/contact">
-                      <Button
-                        variant="contained"
+                      <button
+                      className="btn-dark"
                         style={{ marginRight: "12px" }}
                       >
                         Contact Us
-                      </Button>
+                      </button>
                     </Link>
-                    <Link href={`/post/${item.slug}`}>
-                      <Button variant="outlined">Read More</Button>
+                    <Link href={`/blog/single?id=${item._id}`}>
+                      <button className="btn-light">Read More</button>
                     </Link>
                   </div>
                 </div>
@@ -86,7 +84,7 @@ const CustomCarousel = ({ itemArray }: any) => {
           );
         })}
       </Swiper>
-    </>
+    </div>
   );
 };
 
