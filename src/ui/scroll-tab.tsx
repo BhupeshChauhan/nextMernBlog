@@ -87,7 +87,7 @@ export const Tabs = ({
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn("mt-16", contentClassName)}
+        className={cn("md:mt-16 mt-24", contentClassName)}
       />
     </>
   );
@@ -124,9 +124,9 @@ export const FadeInDiv = ({
           }}
           className={cn("w-full h-full absolute top-0 left-0", className)}
         >
-          <div className="w-full overflow-hidden relative h-[40vh] md:h-[60vh] rounded-2xl p-10 text-xl md:text-4xl text-white bg-violet-900">
+          <div className="w-full overflow-hidden relative h-[40vh] md:h-[60vh] rounded-2xl p-10 text-xl md:text-4xl text-white bg-black">
             <h4 className="text-xl">{tab.name}</h4>
-            <p className="text-sm mt-2">{tab.description}</p>
+            <p className="text-sm mt-2 hidden md:block">{tab.description}</p>
             <img
               src={tab.featuredImage}
               alt="dummy image"
