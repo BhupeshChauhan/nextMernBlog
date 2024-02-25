@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button } from "@mui/material";
+'use client'
 import React from "react";
 import styles from "./CustomCarousel.module.css";
 import Link from "next/link";
@@ -9,9 +9,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import { format, parseISO } from "date-fns";
 
-const CustomCarousel = ({ itemArray, width, height }: any) => {
+const CustomCarousel = ({ itemArray, width, height, className }: any) => {
   return (
-    <div className="z-auto">
+    <div className={`z-auto ${className}`}>
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -32,16 +32,14 @@ const CustomCarousel = ({ itemArray, width, height }: any) => {
             <SwiperSlide key={item.id}>
               <div
                 style={{
-                  padding: "20px",
                   minHeight: "60vh",
-                  marginTop: "30px",
                   alignItems: "center",
                 }}
               >
                  <Link href={`/blog/single?id=${item._id}`}>
-                <h1 className={styles.title}>{item.title}</h1>
+                <h1 className="font-sans font-extrabold text-2xl mb-2 mt-2 text-green-600">{item.title}</h1>
 
-                 </Link>
+                 
                 <div className={styles.textContainer}>
                   <div>
                     <img
@@ -64,21 +62,9 @@ const CustomCarousel = ({ itemArray, width, height }: any) => {
                       {format(parseISO(item?.publishedAt), "MMMM dd, yyyy")}
                     </p>
                   </div>
-                  <p className={styles.postTitle}>{item.des}</p>
-                  <div className="flex gap-2 mb-4">
-                    <Link href="/contact">
-                      <button
-                      className="btn-dark"
-                        style={{ marginRight: "12px" }}
-                      >
-                        Contact Us
-                      </button>
-                    </Link>
-                    <Link href={`/blog/single?id=${item._id}`}>
-                      <button className="btn-light">Read More</button>
-                    </Link>
-                  </div>
+                  <p className="font-roboto font-normal text-md text-darkGrey">{item.des}</p>
                 </div>
+                </Link>
               </div>
             </SwiperSlide>
           );

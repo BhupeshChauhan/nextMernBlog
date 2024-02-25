@@ -39,7 +39,7 @@ export default async function SearchPage({ searchParams }: any) {
   return (
     <div style={{ width: "100%" }}>
       <AnimationWapper>
-        <section className="h-cover flex justify-center gap-10">
+        <section className="h-cover flex justify-center gap-10 container mt-10">
           {/* latest blogs */}
           <div className="w-full">
             <InpageNavigation

@@ -39,6 +39,7 @@ module.exports = {
         serif: ["Georgia", "serif"],
         inter: ["'Inter'", "sans-serif"],
         gelasio: ["'Gelasio'", "serif"],
+        roboto: ["Roboto", "serif"],
       },
       fontSize: {
         sm: "12px",

@@ -50,7 +50,6 @@ const SingleBLogPage = async ({ searchParams }: any) => {
         })}
       </div>
     </div>
-      <Footer />
     </>
   );
 };

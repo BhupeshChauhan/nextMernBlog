@@ -61,6 +61,9 @@ export default async function BlogPage({ searchParams }: any) {
       });
   }
 
+  console.log(latestPosts, "latest")
+  console.log(trandingPosts, "tranding")
+  console.log(categories, 'categories')
   return (
     <div style={{ width: "100%" }}>
       <AnimationWapper>
@@ -127,7 +130,7 @@ export default async function BlogPage({ searchParams }: any) {
                         <Link
                           href={
                             category !== data.name
-                              ? `/blog?category=${data.name}&type${type}`
+                              ? `/blog?category=${data.name}&type=${type}`
                               : "/"
                           }
                         >
@@ -165,7 +168,6 @@ export default async function BlogPage({ searchParams }: any) {
             </div>
           </div>
         </section>
-        <Footer />
       </AnimationWapper>
     </div>
   );

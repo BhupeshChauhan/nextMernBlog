@@ -3,7 +3,7 @@ import Logo from "../shared/logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className="mx-auto bg-white dark:bg-gray-900 max-w-[1400px]">
       <div className="w-[95%] px-6 py-12 mx-auto shadow-lg">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3">
           <div className="sm:col-span-2">
@@ -19,7 +19,7 @@ const Footer = () => {
                 placeholder="Email Address"
               />
 
-              <button className="w-full px-6 py-2.5 text-lg font-medium tracking-wider text-white transition-colors duration-300 text-xl transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+              <button className="w-full px-6 py-2.5 text-lg font-medium tracking-wider text-white transition-colors duration-300 text-xl transform md:w-auto md:mx-4 focus:outline-none bg-green-600 rounded-lg hover:bg-green-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
                 Subscribe
               </button>
             </div>
@@ -84,9 +84,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700" />
 
         <div className="flex items-center justify-between">
-          <a href="#">
           <Logo />
-          </a>
 
           <div className="flex -mx-2">
             <a

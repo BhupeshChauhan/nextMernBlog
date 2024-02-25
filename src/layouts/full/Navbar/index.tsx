@@ -31,7 +31,7 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className="sticky top-3 z-20 bg-white bg-opacity-15">
+    <nav className="mx-auto sticky top-3 z-20 bg-white bg-opacity-15 max-w-[1400px]">
       <div className="navbar  w-[90%] rounded-2xl shadow-md m-auto">
       <Logo />
       <div
@@ -59,7 +59,7 @@ const Navbar = () => {
         >
           <GoSearch size={15} />
         </button>
-        <Link href="/signin" className="btn-dark py-2">
+        <Link href="/signin" className="btn-dark bg-green-600 py-2">
           Sign In
         </Link>
         <Link href="/signup" className="hidden md:block btn-light py-2">

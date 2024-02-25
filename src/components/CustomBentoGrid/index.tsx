@@ -6,7 +6,7 @@ import Link from "next/link";
 export function CustomBentoGrid({ items }: any) {
 
   return (
-    <BentoGrid className="max-w-4xl mx-auto">
+    <BentoGrid className="max-w-4xl">
       {items.map((item: any, i: any) => (
         <AnimationWapper transition={{ duration: 1, delay: i * 0.1 }} key={i}>
           <Link href={`blog?category=${item.name}&type=series`}>

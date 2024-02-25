@@ -8,11 +8,12 @@ const FullLayout = ({ children }: any) => {
   return (
     <>
       <Navbar />
-      <main className="flex min-h-screen">
-        <div className="w-full">
-          <>{children}</>
+      <main>
+        <div className="flex h-full max-w-[1400px] mx-auto ">
+          {children}
         </div>
       </main>
+      <Footer />
     </>
   );
 };
